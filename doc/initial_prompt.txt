@@ -1,0 +1,59 @@
+このディレクトリ `~/ros2_ws/src/bme_common_msgs` はROS2のメッセージ専用パッケージです。
+msg/ディレクトリに5つの.msgファイルがあります。
+以下の3つのタスクを順番に行ってください。
+
+### タスク1: NavPVT.msg、RELPOSNED.msg、UTMHP.msgの項目拡充
+
+/referencesに同梱されている u-blox F9 HPG 1.50 Interface Description PDF を参照し、
+各.msgファイルの項目を u-blox UBX プロトコル仕様に準拠して拡充してください。
+
+対応関係:
+- NavPVT.msg → UBX-NAV-PVT (0x01 0x07) — PDF p.149-151付近
+- RELPOSNED.msg → UBX-NAV-RELPOSNED (0x01 0x3C) — PDF p.152-154付近
+- UTMHP.msg → UBX-NAV-HPPOSLLH (0x01 0x14) — PDF p.143-144付近
+
+拡充ルール:
+- PDFの「Payload description」テーブルに記載されている全フィールドを網羅すること
+- UBXのデータ型とROS2 msg型のマッピングは以下に従うこと:
+  - U1 → uint8
+  - I1 → int8
+  - U2 → uint16
+  - I2 → int16
+  - U4 → uint32
+  - I4 → int32
+  - X1 → uint8 (bitfield)
+  - X2 → uint16 (bitfield)
+  - X4 → uint32 (bitfield)
+  - R4 → float32
+  - R8 → float64
+- reserved フィールドは省略して構わない
+- bitfieldの個別ビットは展開せず、X1/X2/X4としてまとめて1フィールドにすること
+  （例: flags というX4フィールドは `uint32 flags` とし、個別ビットはコメントで説明）
+- 既存の独自計算フィールド（heading_rad, heading_deg, QGC_heading, utm_easting, utm_northingなど）はそのまま残すこと
+- 各フィールドに元の.msgと同様の形式でコメント（単位、説明）を付けること
+- CLASS_IDやMESSAGE_IDの定数定義がある場合はそのまま残すこと
+- fix_statusのような既存の独自フィールド（UBX仕様にはないがアプリ側で使うもの）もそのまま残すこと
+
+### タスク2: CMakeLists.txt の設定
+
+CMakeLists.txtを編集し、メッセージ専用パッケージとして正しく構成してください:
+- find_package で rosidl_default_generators と std_msgs を見つけること
+- rosidl_generate_interfaces() で msg/ 内の全 .msg ファイルを列挙すること
+- ament_export_dependencies(rosidl_default_runtime) を含めること
+- 不要なターゲット（add_executable等）があれば削除すること
+
+### タスク3: package.xml の設定
+
+package.xmlを編集し、以下を確認・修正してください:
+- <buildtool_depend>ament_cmake</buildtool_depend>
+- <build_depend>rosidl_default_generators</build_depend>
+- <exec_depend>rosidl_default_runtime</exec_depend>
+- <member_of_group>rosidl_interface_packages</member_of_group>
+- 不要な依存（ament_cmake_gtest等）があれば削除すること
+
+### 最終確認
+
+全ての変更が完了したら、以下を実行してビルドが通ることを確認してください:
+cd ~/ros2_ws && colcon build --packages-select bme_common_msgs
+
+エラーがあれば修正してください。
