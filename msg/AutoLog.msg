@@ -22,13 +22,15 @@ float64 cross_track_error
 float64 kp
 float64 ki
 float64 kd
+float64 kcte
 float64 look_ahead_dist
-float64 i_control_dist
-float64 i_limit
+float64 cte_control_dist
+float64 cte_limit
 
 float64 p
 float64 i
 float64 d
+float64 cte
 float64 steering_ang #[degree]
 float64 linear_x  # [meter/sec]
 float64 angular_z # [rad/sec]
