@@ -34,3 +34,5 @@ float64 cte_output
 float64 relative_bearing #[degree]
 float64 linear_x  # [meter/sec]
 float64 angular_z # [rad/sec]
+uint16 ch1_pwm    # [us]
+uint16 ch2_pwm    # [us]
