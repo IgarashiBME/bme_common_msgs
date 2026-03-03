@@ -9,14 +9,14 @@ float64 waypoint_start_x
 float64 waypoint_start_y
 float64 waypoint_end_x
 float64 waypoint_end_y
-float64 own_x
-float64 own_y
-float64 own_yaw
+float64 pose_x
+float64 pose_y
+float64 pose_yaw
 
 float64 tf_waypoint_x
 float64 tf_waypoint_y
-float64 tf_own_x
-float64 tf_own_y
+float64 tf_pose_x
+float64 tf_pose_y
 float64 cross_track_error
 
 float64 kp
@@ -27,10 +27,10 @@ float64 look_ahead_dist
 float64 cte_control_dist
 float64 cte_limit
 
-float64 p
-float64 i
-float64 d
-float64 cte
-float64 steering_ang #[degree]
+float64 p_output
+float64 i_output
+float64 d_output
+float64 cte_output
+float64 relative_bearing #[degree]
 float64 linear_x  # [meter/sec]
 float64 angular_z # [rad/sec]
