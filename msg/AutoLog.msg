@@ -36,3 +36,4 @@ float64 linear_x  # [meter/sec]
 float64 angular_z # [rad/sec]
 uint16 ch1_pwm    # [us]
 uint16 ch2_pwm    # [us]
+uint16 ch3_pwm    # [us] rudder
