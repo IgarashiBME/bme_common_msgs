@@ -28,3 +28,8 @@ float64 rudder_reverse
 float64 cmd_vel_speed
 float64 cmd_vel_steer_scale
 float64 cmd_vel_pivot_rate
+
+float64 gnss_ofs_fwd
+float64 gnss_ofs_left
+float64 gnss_ofs_up
+float64 gnss_ofs_yaw
