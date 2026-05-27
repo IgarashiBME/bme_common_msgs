@@ -15,6 +15,7 @@ find_package(builtin_interfaces REQUIRED)
 # Generate ROS2 message interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/AutoLog.msg"
+  "msg/ControlParams.msg"
   "msg/MavModes.msg"
   "msg/PVT.msg"
   "msg/RELPOSNED.msg"
