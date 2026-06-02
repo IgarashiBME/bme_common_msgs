@@ -87,7 +87,7 @@ class TestPublisher(Node):
         msg.tf_own_y = msg.own_y
         msg.cross_track_error = 0.5 * math.sin(self.counter * 0.02)
         msg.kp = 1.0
-        msg.ki = 0.1
+        msg.ki_cte = 0.1
         msg.kd = 0.01
         msg.look_ahead_dist = 5.0
         msg.i_control_dist = 2.0

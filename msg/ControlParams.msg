@@ -2,11 +2,14 @@ builtin_interfaces/Time stamp
 
 float64 kp
 float64 kcte
-float64 ki
+float64 ki_cte
 float64 kd
 float64 look_ahead
 float64 pivot_threshold
 float64 cte_threshold
+float64 cte_i_limit
+float64 cte_i_active
+float64 cte_i_decay
 float64 wp_arrival_dist
 float64 wp_skip_dist
 

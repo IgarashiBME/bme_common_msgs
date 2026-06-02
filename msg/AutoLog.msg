@@ -20,12 +20,15 @@ float64 tf_pose_y
 float64 cross_track_error
 
 float64 kp
-float64 ki
+float64 ki_cte
 float64 kd
 float64 kcte
 float64 look_ahead_dist
 float64 cte_control_dist
 float64 cte_limit
+float64 cte_i_limit
+float64 cte_i_active
+float64 cte_i_decay
 
 float64 p_output
 float64 i_output
