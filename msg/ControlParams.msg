@@ -21,6 +21,8 @@ float64 pwm_min
 float64 pwm_max
 float64 steering_reverse
 float64 throttle_reverse
+float64 left_motor_reverse
+float64 right_motor_reverse
 
 float64 k_rudder
 float64 rudder_center
